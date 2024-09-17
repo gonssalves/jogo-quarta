@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj3wi5mcce4b5"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_8ybs1"]
+[ext_resource type="PackedScene" uid="uid://corx1mwilisb2" path="res://assets/cuteguy/yandere-kun_little_unfinished.glb" id="1_gebx6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68e15"]
+size = Vector3(1, 1.2, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_8ybs1")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="CuteGuy" parent="Pivot" instance=ExtResource("1_gebx6")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, -0.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_68e15")
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(-1, -5.27643e-08, 6.87638e-08, -1.13133e-08, 0.866025, 0.5, -8.59333e-08, 0.5, -0.866025, -0.1, 2.5, -4)
+fov = 46.399
