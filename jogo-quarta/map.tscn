@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpcndlidsxb7c"]
+
+[ext_resource type="Texture2D" uid="uid://cik0hw03j1lin" path="res://assets/house/2145.jpg" id="1_5ro4j"]
+[ext_resource type="Texture2D" uid="uid://cg14ee70erwyk" path="res://assets/house/how-can-i-achieve-ps1-style-textures-instead-of-just-v0-r96z3mbjr6sb1.webp" id="2_4gv8k"]
+[ext_resource type="PackedScene" uid="uid://bj3wi5mcce4b5" path="res://player.tscn" id="3_d41xx"]
+[ext_resource type="PackedScene" uid="uid://dma55iu46fc7n" path="res://hunger_display.tscn" id="4_lew0x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf4lk"]
+size = Vector3(10, 2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ji2o"]
+size = Vector3(10, 2, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcwtt"]
+albedo_texture = ExtResource("1_5ro4j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0oy3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aicrb"]
+albedo_color = Color(0.235863, 0.663424, 0.413839, 1)
+albedo_texture = ExtResource("2_4gv8k")
+
+[node name="Map" type="Node"]
+
+[node name="House" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House"]
+shape = SubResource("BoxShape3D_yf4lk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="House"]
+mesh = SubResource("BoxMesh_7ji2o")
+
+[node name="Floor" type="CSGBox3D" parent="House/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_fcwtt")
+
+[node name="Wall1" type="CSGBox3D" parent="House/MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 3.6, -9.68575e-08)
+size = Vector3(10, 5, 0.2)
+material = SubResource("StandardMaterial3D_e0oy3")
+
+[node name="Wall2" type="CSGBox3D" parent="House/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 3.6, 4.9)
+size = Vector3(10, 5, 0.2)
+material = SubResource("StandardMaterial3D_e0oy3")
+
+[node name="Wall3" type="CSGBox3D" parent="House/MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.9, 3.6, -0.0999999)
+size = Vector3(9.8, 5, 0.2)
+material = SubResource("StandardMaterial3D_e0oy3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12, 0)
+
+[node name="Grass" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(30, 2, 30)
+material = SubResource("StandardMaterial3D_aicrb")
+
+[node name="Player" parent="." instance=ExtResource("3_d41xx")]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(-1, -5.27643e-08, 6.87638e-08, -1.13133e-08, 0.866025, 0.5, -8.59333e-08, 0.5, -0.866025, -0.1, 9.5, -11)
+fov = 76.4579
+
+[node name="HungerDisplay" parent="." instance=ExtResource("4_lew0x")]
