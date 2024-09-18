@@ -8,14 +8,16 @@ func _ready() -> void:
 	set_hunger_label()
 	
 func set_hunger_label() -> void:
-	$ProgressBar/HungerLabel.text = "Hunger: %s" % hunger
+	if hunger == 0:
+		$ProgressBar/HungerLabel.text = "MORREU"
+		get_tree().paused = true
+	else:
+		$ProgressBar/HungerLabel.text = "Hunger: %s" % hunger
 
 func _on_timer_timeout():
-	print(seconds)
-	print(hunger)
 	if hunger == 0:
-		print("MORTO")
 		$Timer.stop()
+		set_hunger_label()
 	if seconds > 0:
 		seconds -= 1
 	if seconds == 0:

@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5alr"]
 size = Vector3(0.72, 1, 1)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_8ybs1")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -21,5 +21,5 @@ shape = SubResource("BoxShape3D_r5alr")
 [node name="CameraPivot" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(-1, -5.27643e-08, 6.87638e-08, -1.13133e-08, 0.866025, 0.5, -8.59333e-08, 0.5, -0.866025, -0.1, 2.5, -4)
+transform = Transform3D(-1, -5.27643e-08, 6.87638e-08, -1.13133e-08, 0.866025, 0.5, -8.59333e-08, 0.5, -0.866025, -0.1, 4.5, -6)
 fov = 46.399

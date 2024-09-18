@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cttwwp7elbqy7"]
+
+[ext_resource type="Script" path="res://interaction/InteractionManager.gd" id="1_1t2mg"]
+
+[node name="InteractionManager" type="Node2D" groups=["player"]]
+script = ExtResource("1_1t2mg")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_right = 28.0
+offset_bottom = 38.0
+grow_horizontal = 2
+text = "[E] EAT"
+horizontal_alignment = 1
+vertical_alignment = 1
