@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpcndlidsxb7c"]
+[gd_scene load_steps=13 format=3 uid="uid://cpcndlidsxb7c"]
 
 [ext_resource type="Texture2D" uid="uid://cik0hw03j1lin" path="res://assets/house/2145.jpg" id="1_5ro4j"]
 [ext_resource type="Texture2D" uid="uid://cg14ee70erwyk" path="res://assets/house/how-can-i-achieve-ps1-style-textures-instead-of-just-v0-r96z3mbjr6sb1.webp" id="2_4gv8k"]
+[ext_resource type="PackedScene" uid="uid://bxl7a4w3jdb3r" path="res://apple.tscn" id="2_ufoqe"]
 [ext_resource type="PackedScene" uid="uid://bj3wi5mcce4b5" path="res://player.tscn" id="3_d41xx"]
 [ext_resource type="PackedScene" uid="uid://dma55iu46fc7n" path="res://hunger_display.tscn" id="4_lew0x"]
 
@@ -80,7 +81,7 @@ size = Vector3(30, 2, 30)
 material = SubResource("StandardMaterial3D_aicrb")
 
 [node name="Player" parent="." instance=ExtResource("3_d41xx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1.65, 0, 0, 0, 1.65, 0, 0, 0, 1.65, 0, 1, 0)
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 
@@ -89,3 +90,12 @@ transform = Transform3D(-1, -5.27643e-08, 6.87638e-08, -1.13133e-08, 0.866025, 0
 fov = 76.4579
 
 [node name="HungerDisplay" parent="." instance=ExtResource("4_lew0x")]
+
+[node name="Apple" parent="." instance=ExtResource("2_ufoqe")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2, 1, -1)
+
+[node name="Apple2" parent="." instance=ExtResource("2_ufoqe")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3, 1, 0)
+
+[node name="Apple3" parent="." instance=ExtResource("2_ufoqe")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1, -7)

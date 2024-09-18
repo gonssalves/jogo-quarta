@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxl7a4w3jdb3r"]
+
+[ext_resource type="PackedScene" uid="uid://cnbfk001okgx8" path="res://interaction/Interactable.tscn" id="1_h7n3i"]
+[ext_resource type="Script" path="res://apple.gd" id="1_onlxu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_72mpx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6r8bh"]
+albedo_color = Color(1, 0, 0, 0.780392)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t1tgw"]
+
+[node name="Apple" type="Node3D"]
+script = ExtResource("1_onlxu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_72mpx")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="StaticBody3D"]
+material = SubResource("StandardMaterial3D_6r8bh")
+
+[node name="Interactable" parent="." instance=ExtResource("1_h7n3i")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+shape = SubResource("BoxShape3D_t1tgw")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Interactable"]

@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj3wi5mcce4b5"]
+[gd_scene load_steps=6 format=3 uid="uid://bj3wi5mcce4b5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_8ybs1"]
 [ext_resource type="PackedScene" uid="uid://corx1mwilisb2" path="res://assets/cuteguy/yandere-kun_little_unfinished.glb" id="1_gebx6"]
+[ext_resource type="PackedScene" uid="uid://22t7l12ams0p" path="res://interaction/player_interactor.tscn" id="3_fhxb3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5alr"]
 size = Vector3(0.72, 1, 1)
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_weag0"]
+
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_8ybs1")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -23,3 +26,11 @@ shape = SubResource("BoxShape3D_r5alr")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(-1, -5.27643e-08, 6.87638e-08, -1.13133e-08, 0.866025, 0.5, -8.59333e-08, 0.5, -0.866025, -0.1, 4.5, -6)
 fov = 46.399
+
+[node name="PlayerInteractor" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_fhxb3")]
+player = NodePath("..")
+
+[node name="CollisionShape3D" parent="PlayerInteractor" index="0"]
+shape = SubResource("BoxShape3D_weag0")
+
+[editable path="PlayerInteractor"]

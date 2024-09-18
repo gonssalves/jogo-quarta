@@ -1,8 +1,8 @@
 extends Node2D
 
-const MAX_HUNGER = 10
+const MAX_HUNGER = 100
 var hunger = MAX_HUNGER
-var seconds=10
+var seconds=5
 
 func _ready() -> void:
 	set_hunger_label()
@@ -22,5 +22,10 @@ func _on_timer_timeout():
 		seconds -= 1
 	if seconds == 0:
 		hunger -= 10
-		seconds = 10
+		seconds = 5
 		set_hunger_label()
+
+
+func _on_interactable_interacted(interactor: Interactor) -> void:
+	hunger += 10
+	set_hunger_label()
